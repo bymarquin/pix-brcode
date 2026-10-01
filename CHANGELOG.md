@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.0
+
+- `qrSvg` e `qrMatrix`: gerador de QR Code próprio (modo byte, versões 1 a 40, níveis L/M/Q/H), sem dependências. Conferido contra a lib `qrcode` (todas as versões, máscaras e níveis) e lido de volta por um decodificador independente.
+- Telefone: só celular com DDD real. E-mail: regras de tamanho e caracteres.
+- `crc16` até 2x mais rápido no caso ASCII e correto para UTF-8.
+
 ## 0.2.0
 
 - `detectKeyType` e `isValidKey`: validam CPF, CNPJ (inclusive alfanumérico), e-mail, telefone `+55` e chave aleatória (EVP).

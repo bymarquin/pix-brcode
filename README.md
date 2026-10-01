@@ -4,7 +4,7 @@
 
 <p align="center">
   Gera, lê e valida <strong>Pix copia-e-cola</strong> (BR Code / EMV) em TypeScript.<br/>
-  Zero dependências, funciona em Node e no navegador.
+  Gera também o QR Code (SVG). Zero dependências, funciona em Node e no navegador.
 </p>
 
 ## Uso
@@ -52,12 +52,19 @@ isValidKey("nao-e-chave"); // false
 
 ### QR Code
 
-Passe o `code` para qualquer gerador de QR (ex.: `qrcode`):
+Gera o QR direto, sem dependências, como SVG ou matriz de módulos:
 
 ```ts
-import QRCode from "qrcode";
-const png = await QRCode.toDataURL(code);
+import { generate, qrSvg } from "pix-brcode";
+
+const svg = qrSvg(generate({ key: "a@b.com", name: "Loja", city: "Araripe", amount: 10.5 }), {
+  size: 320, // opcional (px); sem isso o SVG escala com o container
+  ecc: "M", // L, M, Q ou H (padrão M)
+});
+document.querySelector("#pix").innerHTML = svg;
 ```
+
+`qrMatrix(texto)` devolve `boolean[][]` (`true` = módulo escuro) se você quiser desenhar em canvas ou PDF.
 
 ## API
 
@@ -68,15 +75,16 @@ const png = await QRCode.toDataURL(code);
 | `validate(payload)` | `true` se o CRC confere. |
 | `parse(payload)` | Lê os campos. Lança `Error` se o CRC ou a estrutura forem inválidos. |
 | `detectKeyType(key)` / `isValidKey(key)` | Tipo da chave (`cpf`, `cnpj`, `email`, `phone`, `evp`) ou `null`. |
+| `qrSvg(texto, opts?)` | QR Code como string SVG. Opções: `ecc`, `size`, `margin`, `dark`, `light`. |
+| `qrMatrix(texto, opts?)` | QR Code como matriz de booleanos. |
 | `crc16(texto)` | CRC16/CCITT-FALSE em 4 dígitos hexa. |
 
 Nome e cidade são convertidos para maiúsculas, sem acento, e truncados em 25 e 15 caracteres, como o padrão exige.
 
-## Limites
+## Fora do escopo
 
-- Não gera imagem de QR Code (use uma lib de QR com o `code`).
-- Não consulta o PSP: no Pix dinâmico, só monta e lê o código, não busca o payload da URL.
-- E-mail e telefone são validados só pelo formato.
+- **Buscar o payload do Pix dinâmico na URL do PSP.** É um JWS assinado que exige verificar a assinatura e a cadeia de certificados; ler sem verificar daria dados em que não dá para confiar.
+- **Confirmar que a chave existe.** Só o DICT do Banco Central sabe, via PSP autorizado. A lib valida o formato: dígitos verificadores de CPF/CNPJ, DDD real e celular com 9 no telefone, regras de tamanho e caracteres no e-mail.
 
 ## Desenvolvimento
 

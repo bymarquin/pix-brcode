@@ -6,7 +6,10 @@
     "declaration": true,
     "outDir": "dist/esm",
     "rootDir": "src",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "rewriteRelativeImportExtensions": true
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }

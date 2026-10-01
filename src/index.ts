@@ -1,3 +1,6 @@
+export { qrMatrix, qrSvg } from "./qr.ts";
+export type { QrEcc, QrOptions, QrSvgOptions } from "./qr.ts";
+
 export type KeyType = "cpf" | "cnpj" | "email" | "phone" | "evp";
 
 export interface PixOptions {
@@ -97,14 +100,31 @@ function validCnpj(s: string): boolean {
   return digit(12) === Number(s[12]) && digit(13) === Number(s[13]);
 }
 
+// DDDs em uso no Brasil
+const DDD = new Set(
+  "11 12 13 14 15 16 17 18 19 21 22 24 27 28 31 32 33 34 35 37 38 41 42 43 44 45 46 47 48 49 51 53 54 55 61 62 63 64 65 66 67 68 69 71 73 74 75 77 79 81 82 83 84 85 86 87 88 89 91 92 93 94 95 96 97 98 99".split(" "),
+);
+
+/** Pix só aceita celular: +55, DDD válido e 9 dígitos começando em 9. */
+const validPhone = (s: string) => /^\+55\d{2}9\d{8}$/.test(s) && DDD.has(s.slice(3, 5));
+
+const EMAIL_LOCAL = /^[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*$/;
+const EMAIL_DOMAIN = /^([A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z]{2,}$/;
+
+/** E-mail de até 77 caracteres (limite do Pix), local de até 64, domínio com TLD. */
+function validEmail(s: string): boolean {
+  const at = s.lastIndexOf("@");
+  return s.length <= 77 && at > 0 && at <= 64 && EMAIL_LOCAL.test(s.slice(0, at)) && EMAIL_DOMAIN.test(s.slice(at + 1));
+}
+
 /** Descobre o tipo da chave Pix, ou `null` se o formato for inválido. */
 export function detectKeyType(key: string): KeyType | null {
   const k = typeof key === "string" ? key.trim() : "";
   if (/^\d{11}$/.test(k)) return validCpf(k) ? "cpf" : null;
   if (/^[0-9A-Z]{12}\d{2}$/.test(k)) return validCnpj(k) ? "cnpj" : null;
-  if (/^\+55\d{10,11}$/.test(k)) return "phone";
+  if (validPhone(k)) return "phone";
   if (/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(k)) return "evp";
-  if (k.length <= 77 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(k)) return "email";
+  if (validEmail(k)) return "email";
   return null;
 }
 

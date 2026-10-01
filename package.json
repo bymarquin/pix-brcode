@@ -1,7 +1,7 @@
 {
   "name": "pix-brcode",
-  "version": "0.2.0",
-  "description": "Gera, lê e valida Pix copia-e-cola (BR Code/EMV) em TypeScript, zero dependências",
+  "version": "0.3.0",
+  "description": "Gera, lê e valida Pix copia-e-cola (BR Code/EMV) e QR Code em TypeScript, zero dependências",
   "type": "module",
   "main": "./dist/cjs/index.js",
   "types": "./dist/esm/index.d.ts",
@@ -33,7 +33,9 @@
     "qrcode",
     "bacen",
     "pagamentos",
-    "brasil"
+    "brasil",
+    "qr",
+    "qrcode"
   ],
   "license": "MIT",
   "author": "bymarquin",
@@ -46,6 +48,7 @@
   },
   "devDependencies": {
     "@types/node": "^26.6.3",
+    "qrcode": "^1.5.4",
     "typescript": "^7.0.2"
   },
   "module": "./dist/esm/index.js",

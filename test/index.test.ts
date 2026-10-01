@@ -120,3 +120,14 @@ test("parse rejeita estrutura inválida mesmo com CRC correto", () => {
   assert.throws(() => parse(signed("00020126")), /TLV/);
   assert.throws(() => parse(signed("000201" + "5920ABC")), /tamanho/);
 });
+
+test("telefone: só celular com DDD real; e-mail com regras de formato", () => {
+  assert.equal(detectKeyType("+5585999998888"), "phone");
+  for (const bad of ["+5500999998888", "+558532221234", "+5585899998888", "+55859999988880", "5585999998888"]) {
+    assert.equal(detectKeyType(bad), null, bad);
+  }
+  assert.equal(detectKeyType("nome.sobrenome+pix@exemplo.com.br"), "email");
+  for (const bad of ["a..b@c.com", ".a@c.com", "a.@c.com", "a@c", "a@c.c", "a@-c.com", "a b@c.com", "@c.com", `${"a".repeat(65)}@c.com`, `a@${"b".repeat(75)}.com`]) {
+    assert.equal(detectKeyType(bad), null, bad);
+  }
+});
