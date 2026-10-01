@@ -1,6 +1,11 @@
-# pix-brcode
+<h1 align="center">
+  <img src="assets/logo-animated.svg" width="480" alt="pix-brcode" />
+</h1>
 
-Gera, lê e valida **Pix copia-e-cola** (BR Code / EMV) em TypeScript. Zero dependências, funciona em Node e no navegador.
+<p align="center">
+  Gera, lê e valida <strong>Pix copia-e-cola</strong> (BR Code / EMV) em TypeScript.<br/>
+  Zero dependências, funciona em Node e no navegador.
+</p>
 
 ## Uso
 

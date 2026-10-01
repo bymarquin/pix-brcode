@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160" width="640" height="160" role="img" aria-label="pix-brcode"><title>pix-brcode</title><style>.fg{fill:#0D1117}.ac{fill:#1F6F3A}
+@media (prefers-color-scheme: dark){.fg{fill:#fff}.ac{fill:#7CCF80}}
+.t{font:700 72px 'JetBrains Mono','Fira Code',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:-0.02em}
+</style><rect id="bg" class="a" x="16" y="16" width="128" height="128" rx="28.16" fill="#7CCF80"/>
+<rect id="p0" class="a" x="32.00" y="32.00" width="16.0" height="16.0" rx="3.20" fill="#0D1117"/>
+<rect id="p1" class="a" x="52.00" y="32.00" width="16.0" height="16.0" rx="3.20" fill="#0D1117"/>
+<rect id="p2" class="a" x="72.00" y="32.00" width="16.0" height="16.0" rx="3.20" fill="#0D1117"/>
+<rect id="p3" class="a" x="92.00" y="32.00" width="16.0" height="16.0" rx="3.20" fill="#0D1117"/>
+<rect id="p4" class="a" x="32.00" y="52.00" width="16.0" height="16.0" rx="3.20" fill="#0D1117"/>
+<rect id="p5" class="a" x="112.00" y="52.00" width="16.0" height="16.0" rx="3.20" fill="#0D1117"/>
+<rect id="p6" class="a" x="32.00" y="72.00" width="16.0" height="16.0" rx="3.20" fill="#0D1117"/>
+<rect id="p7" class="a" x="52.00" y="72.00" width="16.0" height="16.0" rx="3.20" fill="#0D1117"/>
+<rect id="p8" class="a" x="72.00" y="72.00" width="16.0" height="16.0" rx="3.20" fill="#0D1117"/>
+<rect id="p9" class="a" x="92.00" y="72.00" width="16.0" height="16.0" rx="3.20" fill="#0D1117"/>
+<rect id="p10" class="a" x="32.00" y="92.00" width="16.0" height="16.0" rx="3.20" fill="#0D1117"/>
+<rect id="p11" class="a" x="32.00" y="112.00" width="16.0" height="16.0" rx="3.20" fill="#0D1117"/>
+<rect id="p12" class="a" x="112.00" y="112.00" width="16.0" height="16.0" rx="3.20" fill="#1F6F3A"/>
+<text class="t" x="176" y="100" textLength="432" lengthAdjust="spacingAndGlyphs"><tspan class="fg" fill="#0D1117">pix</tspan><tspan class="ac" fill="#1F6F3A">-brcode</tspan></text></svg>
