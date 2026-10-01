@@ -7,10 +7,18 @@
   Gera também o QR Code (SVG). Zero dependências, funciona em Node e no navegador.
 </p>
 
+## Instalação
+
+```bash
+npm install brpix
+```
+
+O pacote no npm se chama `brpix`; o projeto e o repositório se chamam `pix-brcode`.
+
 ## Uso
 
 ```ts
-import { generate, parse, validate } from "pix-brcode";
+import { generate, parse, validate } from "brpix";
 
 const code = generate({
   key: "123e4567-e12b-12d1-a456-426655440000", // CPF/CNPJ, e-mail, telefone (+55...) ou chave aleatória
@@ -32,7 +40,7 @@ Funciona com `import` e `require`.
 Quando o valor e a chave vêm de um payload hospedado no PSP:
 
 ```ts
-import { generateDynamic } from "pix-brcode";
+import { generateDynamic } from "brpix";
 
 generateDynamic({ url: "https://pix.exemplo.com.br/qr/v2/abc123", name: "Loja", city: "Araripe" });
 ```
@@ -40,7 +48,7 @@ generateDynamic({ url: "https://pix.exemplo.com.br/qr/v2/abc123", name: "Loja", 
 ### Validar chave
 
 ```ts
-import { detectKeyType, isValidKey } from "pix-brcode";
+import { detectKeyType, isValidKey } from "brpix";
 
 detectKeyType("52998224725"); // "cpf"
 detectKeyType("12ABC34501DE35"); // "cnpj" (CNPJ alfanumérico)
@@ -55,7 +63,7 @@ isValidKey("nao-e-chave"); // false
 Gera o QR direto, sem dependências, como SVG ou matriz de módulos:
 
 ```ts
-import { generate, qrSvg } from "pix-brcode";
+import { generate, qrSvg } from "brpix";
 
 const svg = qrSvg(generate({ key: "a@b.com", name: "Loja", city: "Araripe", amount: 10.5 }), {
   size: 320, // opcional (px); sem isso o SVG escala com o container

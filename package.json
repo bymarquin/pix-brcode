@@ -1,5 +1,5 @@
 {
-  "name": "pix-brcode",
+  "name": "brpix",
   "version": "0.3.0",
   "description": "Gera, lê e valida Pix copia-e-cola (BR Code/EMV) e QR Code em TypeScript, zero dependências",
   "type": "module",
