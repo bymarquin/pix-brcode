@@ -11,11 +11,18 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [22, 24]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: ${{ matrix.node }}
       - run: npm ci
       - run: npm test
       - run: npm run build
+      - name: Smoke test dos builds (CJS e ESM)
+        run: |
+          node -e "const p=require('./dist/cjs/index.js'); if(!p.validate(p.generate({key:'a@b.com',name:'A',city:'B'}))) process.exit(1)"
+          node --input-type=module -e "import {generate,validate} from './dist/esm/index.js'; if(!validate(generate({key:'a@b.com',name:'A',city:'B'}))) process.exit(1)"
