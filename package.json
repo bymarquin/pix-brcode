@@ -1,0 +1,44 @@
+{
+  "name": "pix-brcode",
+  "version": "0.1.0",
+  "description": "Gera, lê e valida Pix copia-e-cola (BR Code/EMV) em TypeScript, zero dependências",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test test/*.test.ts",
+    "prepublishOnly": "npm test && npm run build"
+  },
+  "keywords": [
+    "pix",
+    "brcode",
+    "emv",
+    "qrcode",
+    "bacen",
+    "pagamentos",
+    "brasil"
+  ],
+  "license": "MIT",
+  "author": "bymarquin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bymarquin/pix-brcode.git"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "typescript": "^7.0.2"
+  }
+}
