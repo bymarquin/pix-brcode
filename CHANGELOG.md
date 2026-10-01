@@ -2,7 +2,7 @@
 
 ## 0.3.0
 
-- Pacote publicado no npm como `brpix` (o nome `pix-brcode` foi barrado por ser parecido com `pix-br-code`).
+- Pacote publicado no npm como `@m4rquin/pix-brcode` (os nomes sem escopo `pix-brcode` e `brpix` foram barrados por semelhança com `pix-br-code` e `urix`).
 - `qrSvg` e `qrMatrix`: gerador de QR Code próprio (modo byte, versões 1 a 40, níveis L/M/Q/H), sem dependências. Conferido contra a lib `qrcode` (todas as versões, máscaras e níveis) e lido de volta por um decodificador independente.
 - Telefone: só celular com DDD real. E-mail: regras de tamanho e caracteres.
 - `crc16` até 2x mais rápido no caso ASCII e correto para UTF-8.
