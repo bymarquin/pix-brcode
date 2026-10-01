@@ -3,6 +3,12 @@
 </h1>
 
 <p align="center">
+  <a href="https://www.npmjs.com/package/@m4rquin/pix-brcode"><img src="https://img.shields.io/npm/v/@m4rquin/pix-brcode?color=7ccf80&labelColor=0d1117" alt="npm" /></a>
+  <a href="https://github.com/bymarquin/pix-brcode/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/bymarquin/pix-brcode/ci.yml?branch=main&label=CI&color=7ccf80&labelColor=0d1117" alt="CI" /></a>
+  <img src="https://img.shields.io/npm/l/@m4rquin/pix-brcode?color=7ccf80&labelColor=0d1117" alt="licença" />
+</p>
+
+<p align="center">
   Gera, lê e valida <strong>Pix copia-e-cola</strong> (BR Code / EMV) em TypeScript.<br/>
   Gera também o QR Code (SVG). Zero dependências, funciona em Node e no navegador.
 </p>
